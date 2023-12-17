@@ -72,4 +72,7 @@ dependencies {
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Snackbar
+    implementation 'com.radusalagean:info-bar-compose:1.0.0'
 }
