@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -75,4 +77,9 @@ dependencies {
 
     // Snackbar
     implementation 'com.radusalagean:info-bar-compose:1.0.0'
+
+    //Dagger - Hilt
+    implementation 'com.google.dagger:hilt-android:2.44'
+    kapt 'com.google.dagger:hilt-compiler:2.44'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 }
