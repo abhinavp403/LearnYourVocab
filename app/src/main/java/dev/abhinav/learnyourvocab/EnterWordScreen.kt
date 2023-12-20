@@ -19,6 +19,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
@@ -28,13 +29,16 @@ import androidx.compose.ui.unit.sp
 import com.radusalagean.infobarcompose.InfoBar
 import dev.abhinav.learnyourvocab.ui.CustomMessage
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
+import dev.abhinav.learnyourvocab.util.PreferencesManager
 import dev.abhinav.learnyourvocab.viewmodel.WordsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
 
+    val context = LocalContext.current
     var message: CustomMessage? by remember { mutableStateOf(null) }
+    val sharedPreference = remember { PreferencesManager(context) }
 
     val content: @Composable (CustomMessage) -> Unit = {
         Row {
@@ -167,6 +171,7 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
                         backgroundColor = Color(0xFFE74242)
                     )
                 } else {
+                    sharedPreference.setAllWordsEntered(true)
                     onButtonClicked.invoke()
                 }
             }
