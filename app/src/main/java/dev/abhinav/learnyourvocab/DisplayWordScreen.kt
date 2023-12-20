@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -19,10 +21,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
-import dev.abhinav.learnyourvocab.viewmodel.WordsViewModel
+import dev.abhinav.learnyourvocab.util.PreferencesManager
 
 @Composable
-fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostController) {
+fun DisplayWordScreen(navController: NavHostController) {
+
+    val context = LocalContext.current
+    val sharedPreference = remember { PreferencesManager(context) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -39,7 +44,7 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = viewModel.word1.value,
+            text = sharedPreference.getWord1()!!,
             style = MaterialTheme.typography.displayLarge,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
@@ -47,11 +52,11 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
             modifier = Modifier
                 .padding(16.dp)
                 .clickable {
-                    navController.navigate("word_detail_screen/${viewModel.word1.value}")
+                    navController.navigate("word_detail_screen/${sharedPreference.getWord1()}")
                 }
         )
         Text(
-            text = viewModel.word2.value,
+            text = sharedPreference.getWord2()!!,
             style = MaterialTheme.typography.displayLarge,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
@@ -59,11 +64,11 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
             modifier = Modifier
                 .padding(16.dp)
                 .clickable {
-                    navController.navigate("word_detail_screen/${viewModel.word2.value}")
+                    navController.navigate("word_detail_screen/${sharedPreference.getWord2()}")
                 }
         )
         Text(
-            text = viewModel.word3.value,
+            text = sharedPreference.getWord3()!!,
             style = MaterialTheme.typography.displayLarge,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
@@ -71,11 +76,11 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
             modifier = Modifier
                 .padding(16.dp)
                 .clickable {
-                    navController.navigate("word_detail_screen/${viewModel.word3.value}")
+                    navController.navigate("word_detail_screen/${sharedPreference.getWord3()}")
                 }
         )
         Text(
-            text = viewModel.word4.value,
+            text = sharedPreference.getWord4()!!,
             style = MaterialTheme.typography.displayLarge,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
@@ -83,11 +88,11 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
             modifier = Modifier
                 .padding(16.dp)
                 .clickable {
-                    navController.navigate("word_detail_screen/${viewModel.word4.value}")
+                    navController.navigate("word_detail_screen/${sharedPreference.getWord4()}")
                 }
         )
         Text(
-            text = viewModel.word5.value,
+            text = sharedPreference.getWord5()!!,
             style = MaterialTheme.typography.displayLarge,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
@@ -95,7 +100,7 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
             modifier = Modifier
                 .padding(16.dp)
                 .clickable {
-                    navController.navigate("word_detail_screen/${viewModel.word5.value}")
+                    navController.navigate("word_detail_screen/${sharedPreference.getWord5()}")
                 }
         )
     }
@@ -105,6 +110,6 @@ fun DisplayWordScreen(viewModel: WordsViewModel, navController: NavHostControlle
 @Composable
 fun DisplayWordScreenPreview() {
     LearnYourVocabTheme {
-        DisplayWordScreen(WordsViewModel(), rememberNavController())
+        DisplayWordScreen(rememberNavController())
     }
 }

@@ -8,6 +8,56 @@ class PreferencesManager(context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
+    fun setWord1(word: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(PREF_WORD_1, word)
+        editor.apply()
+    }
+
+    fun getWord1() : String? {
+        return sharedPreferences.getString(PREF_WORD_1, "")
+    }
+
+    fun setWord2(word: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(PREF_WORD_2, word)
+        editor.apply()
+    }
+
+    fun getWord2() : String? {
+        return sharedPreferences.getString(PREF_WORD_2, "")
+    }
+
+    fun setWord3(word: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(PREF_WORD_3, word)
+        editor.apply()
+    }
+
+    fun getWord3() : String? {
+        return sharedPreferences.getString(PREF_WORD_3, "")
+    }
+
+    fun setWord4(word: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(PREF_WORD_4, word)
+        editor.apply()
+    }
+
+    fun getWord4() : String? {
+        return sharedPreferences.getString(PREF_WORD_4, "")
+    }
+
+    fun setWord5(word: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString(PREF_WORD_5, word)
+        editor.apply()
+    }
+
+    fun getWord5() : String? {
+        return sharedPreferences.getString(PREF_WORD_5, "")
+    }
+
     fun setDate(date: LocalDate) {
         val dateString = date.toString()
         val editor = sharedPreferences.edit()
@@ -33,6 +83,11 @@ class PreferencesManager(context: Context) {
     }
 
     companion object {
+        const val PREF_WORD_1 = "word_1"
+        const val PREF_WORD_2 = "word_2"
+        const val PREF_WORD_3 = "word_3"
+        const val PREF_WORD_4 = "word_4"
+        const val PREF_WORD_5 = "word_5"
         const val PREF_LOCAL_DATE = "local_date"
         const val PREF_ALL_WORDS_ENTERED = "all_words_entered"
     }

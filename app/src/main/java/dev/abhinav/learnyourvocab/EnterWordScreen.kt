@@ -30,15 +30,19 @@ import com.radusalagean.infobarcompose.InfoBar
 import dev.abhinav.learnyourvocab.ui.CustomMessage
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
 import dev.abhinav.learnyourvocab.util.PreferencesManager
-import dev.abhinav.learnyourvocab.viewmodel.WordsViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
+fun EnterWordScreen(onButtonClicked: () -> Unit) {
 
     val context = LocalContext.current
     var message: CustomMessage? by remember { mutableStateOf(null) }
     val sharedPreference = remember { PreferencesManager(context) }
+    var word1 by remember { mutableStateOf("") }
+    var word2 by remember { mutableStateOf("") }
+    var word3 by remember { mutableStateOf("") }
+    var word4 by remember { mutableStateOf("") }
+    var word5 by remember { mutableStateOf("") }
 
     val content: @Composable (CustomMessage) -> Unit = {
         Row {
@@ -64,8 +68,8 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
         Spacer(modifier = Modifier.height(24.dp))
 
         OutlinedTextField(
-            value = viewModel.word1.value,
-            onValueChange = { viewModel.word1.value = it },
+            value = word1,
+            onValueChange = { word1 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             colors = TextFieldDefaults.textFieldColors(
@@ -83,8 +87,8 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
         )
 
         OutlinedTextField(
-            value = viewModel.word2.value,
-            onValueChange = { viewModel.word2.value = it },
+            value = word2,
+            onValueChange = { word2 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             colors = TextFieldDefaults.textFieldColors(
@@ -102,8 +106,8 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
         )
 
         OutlinedTextField(
-            value = viewModel.word3.value,
-            onValueChange = { viewModel.word3.value = it },
+            value = word3,
+            onValueChange = { word3 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             colors = TextFieldDefaults.textFieldColors(
@@ -121,8 +125,8 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
         )
 
         OutlinedTextField(
-            value = viewModel.word4.value,
-            onValueChange = { viewModel.word4.value = it },
+            value = word4,
+            onValueChange = { word4 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             colors = TextFieldDefaults.textFieldColors(
@@ -140,8 +144,8 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
         )
 
         OutlinedTextField(
-            value = viewModel.word5.value,
-            onValueChange = { viewModel.word5.value = it },
+            value = word5,
+            onValueChange = { word5 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
             colors = TextFieldDefaults.textFieldColors(
@@ -164,13 +168,18 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp),
             onClick = {
-                if (viewModel.word1.value.isBlank() || viewModel.word2.value.isBlank() || viewModel.word3.value.isBlank() || viewModel.word4.value.isBlank() || viewModel.word5.value.isBlank()) {
+                if (word1.isBlank() || word2.isBlank() || word3.isBlank() || word4.isBlank() || word5.isBlank()) {
                     message = CustomMessage(
                         textString = "Please Input All 5 Words!",
                         textColor = Color(0xFF2B2B2B),
                         backgroundColor = Color(0xFFE74242)
                     )
                 } else {
+                    sharedPreference.setWord1(word1)
+                    sharedPreference.setWord2(word2)
+                    sharedPreference.setWord3(word3)
+                    sharedPreference.setWord4(word4)
+                    sharedPreference.setWord5(word5)
                     sharedPreference.setAllWordsEntered(true)
                     onButtonClicked.invoke()
                 }
@@ -191,6 +200,6 @@ fun EnterWordScreen(viewModel: WordsViewModel, onButtonClicked: () -> Unit) {
 @Composable
 fun EnterWordScreenPreview() {
     LearnYourVocabTheme {
-        EnterWordScreen(WordsViewModel()) {}
+        EnterWordScreen {}
     }
 }
