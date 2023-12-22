@@ -66,20 +66,10 @@ class PreferencesManager(context: Context) {
     }
 
     fun getDate(): LocalDate? {
-        val dateString = sharedPreferences.getString(PREF_LOCAL_DATE, null)
+        val dateString = sharedPreferences.getString(PREF_LOCAL_DATE, LocalDate.now().toString())
         return dateString?.let {
             LocalDate.parse(it)
         }
-    }
-
-    fun setAllWordsEntered(value: Boolean) {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(PREF_ALL_WORDS_ENTERED, value)
-        editor.apply()
-    }
-
-    fun getAllWordsEntered(): Boolean {
-        return sharedPreferences.getBoolean(PREF_ALL_WORDS_ENTERED, false)
     }
 
     companion object {
@@ -89,6 +79,5 @@ class PreferencesManager(context: Context) {
         const val PREF_WORD_4 = "word_4"
         const val PREF_WORD_5 = "word_5"
         const val PREF_LOCAL_DATE = "local_date"
-        const val PREF_ALL_WORDS_ENTERED = "all_words_entered"
     }
 }

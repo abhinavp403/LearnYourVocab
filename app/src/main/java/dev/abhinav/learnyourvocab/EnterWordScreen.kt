@@ -180,7 +180,6 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
                     sharedPreference.setWord3(word3)
                     sharedPreference.setWord4(word4)
                     sharedPreference.setWord5(word5)
-                    sharedPreference.setAllWordsEntered(true)
                     onButtonClicked.invoke()
                 }
             }

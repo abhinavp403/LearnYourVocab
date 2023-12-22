@@ -23,17 +23,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreference = PreferencesManager(this)
-        setLocalDateInfo()
         setContent {
             LearnYourVocabTheme {
                 val navController = rememberNavController()
                 val compareDateResult = LocalDate.now().compareTo(sharedPreference.getDate())
                 NavHost(
                     navController = navController,
-                    startDestination = if(compareDateResult < 0 && sharedPreference.getAllWordsEntered()) "display_words_screen"
+                    startDestination = if(compareDateResult < 0) "display_words_screen"
                                     else "enter_words_screen"
                 ) {
                     composable("enter_words_screen") {
+                        setLocalDateInfo()
                         EnterWordScreen(
                             onButtonClicked = {
                                 navController.navigate("display_words_screen")
