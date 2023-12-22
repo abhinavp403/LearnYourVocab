@@ -36,7 +36,11 @@ class MainActivity : ComponentActivity() {
                         setLocalDateInfo()
                         EnterWordScreen(
                             onButtonClicked = {
-                                navController.navigate("display_words_screen")
+                                navController.navigate("display_words_screen") {
+                                    popUpTo("enter_words_screen") {
+                                        inclusive = true
+                                    }
+                                }
                             }
                         )
                     }
