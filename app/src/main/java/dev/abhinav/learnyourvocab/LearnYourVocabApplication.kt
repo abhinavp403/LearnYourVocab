@@ -13,8 +13,8 @@ class LearnYourVocabApplication : Application() {
         Timber.plant(Timber.DebugTree())
 
         val generativeModel = GenerativeModel(
-            modelName = "Sentence_Generator",
-            apiKey = BuildConfig.apiKey
+            modelName = "gemini-pro",
+            apiKey = "AIzaSyAI4C-0DpQ1DST892aCLArGKwhzRb_JMZ4"
         )
     }
 }

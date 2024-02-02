@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.google.ai.client.generativeai.GenerativeModel
 import dagger.hilt.android.AndroidEntryPoint
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
 import dev.abhinav.learnyourvocab.util.PreferencesManager
@@ -57,9 +58,14 @@ class MainActivity : ComponentActivity() {
                         val word = remember {
                             it.arguments!!.getString("word")
                         }
+                        val generativeModel = GenerativeModel(
+                            modelName = "gemini-pro",
+                            apiKey = BuildConfig.apiKey
+                        )
                         WordDetailScreen(
                             clickedWord = word?.toLowerCase(Locale.ROOT) ?: "",
-                            navController = navController
+                            navController = navController,
+                            model = generativeModel
                         )
                     }
                 }
