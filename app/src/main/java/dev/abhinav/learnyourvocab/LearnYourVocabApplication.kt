@@ -14,7 +14,7 @@ class LearnYourVocabApplication : Application() {
 
         val generativeModel = GenerativeModel(
             modelName = "gemini-pro",
-            apiKey = "AIzaSyAI4C-0DpQ1DST892aCLArGKwhzRb_JMZ4"
+            apiKey = BuildConfig.apiKey
         )
     }
 }
