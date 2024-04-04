@@ -30,6 +30,7 @@ import com.radusalagean.infobarcompose.InfoBar
 import dev.abhinav.learnyourvocab.ui.CustomMessage
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
 import dev.abhinav.learnyourvocab.util.PreferencesManager
+import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -180,6 +181,7 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
                     sharedPreference.setWord3(word3)
                     sharedPreference.setWord4(word4)
                     sharedPreference.setWord5(word5)
+                    setLocalDateInfo(sharedPreference)
                     onButtonClicked.invoke()
                 }
             }
@@ -193,6 +195,12 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
             message = null
         }
     }
+}
+
+private fun setLocalDateInfo(sharedPreference: PreferencesManager) {
+    val currentDate = LocalDate.now()
+    val nextRefreshDate = currentDate.plusDays(7)
+    sharedPreference.setDate(nextRefreshDate)
 }
 
 @Preview(showBackground = true)

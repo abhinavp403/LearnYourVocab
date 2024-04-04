@@ -13,7 +13,7 @@ import com.google.ai.client.generativeai.GenerativeModel
 import dagger.hilt.android.AndroidEntryPoint
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
 import dev.abhinav.learnyourvocab.util.PreferencesManager
-import java.time.LocalDate
+import java.time.LocalTime
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -24,17 +24,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreference = PreferencesManager(this)
+        val compareDateResult = LocalTime.now().compareTo(sharedPreference.getDate())
         setContent {
             LearnYourVocabTheme {
                 val navController = rememberNavController()
-                val compareDateResult = LocalDate.now().compareTo(sharedPreference.getDate())
                 NavHost(
                     navController = navController,
                     startDestination = if(compareDateResult < 0) "display_words_screen"
                                     else "enter_words_screen"
                 ) {
                     composable("enter_words_screen") {
-                        setLocalDateInfo()
                         EnterWordScreen(
                             onButtonClicked = {
                                 navController.navigate("display_words_screen") {
@@ -71,11 +70,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    private fun setLocalDateInfo() {
-        val currentDate = LocalDate.now()
-        val nextRefreshDate = currentDate.plusDays(7)
-        sharedPreference.setDate(nextRefreshDate)
     }
 }
