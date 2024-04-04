@@ -13,7 +13,7 @@ import com.google.ai.client.generativeai.GenerativeModel
 import dagger.hilt.android.AndroidEntryPoint
 import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
 import dev.abhinav.learnyourvocab.util.PreferencesManager
-import java.time.LocalTime
+import java.time.LocalDate
 import java.util.Locale
 
 @AndroidEntryPoint
@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPreference = PreferencesManager(this)
-        val compareDateResult = LocalTime.now().compareTo(sharedPreference.getDate())
+        val compareDateResult = LocalDate.now().compareTo(sharedPreference.getDate())
         setContent {
             LearnYourVocabTheme {
                 val navController = rememberNavController()

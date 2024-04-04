@@ -3,7 +3,6 @@ package dev.abhinav.learnyourvocab.util
 import android.content.Context
 import android.content.SharedPreferences
 import java.time.LocalDate
-import java.time.LocalTime
 
 class PreferencesManager(context: Context) {
 
