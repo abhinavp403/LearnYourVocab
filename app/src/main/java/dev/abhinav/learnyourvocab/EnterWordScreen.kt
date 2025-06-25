@@ -32,7 +32,6 @@ import dev.abhinav.learnyourvocab.ui.theme.LearnYourVocabTheme
 import dev.abhinav.learnyourvocab.util.PreferencesManager
 import java.time.LocalDate
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EnterWordScreen(onButtonClicked: () -> Unit) {
 
@@ -73,14 +72,13 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
             onValueChange = { word1 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
                 disabledIndicatorColor = MaterialTheme.colorScheme.surface,
             ),
             label = { Text("Enter Word 1") },
             keyboardOptions = KeyboardOptions.Default.copy(
-                autoCorrect = true,
                 capitalization = KeyboardCapitalization.Sentences,
                 imeAction = ImeAction.Next
             ),
@@ -92,14 +90,13 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
             onValueChange = { word2 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
                 disabledIndicatorColor = MaterialTheme.colorScheme.surface,
             ),
             label = { Text("Enter Word 2") },
             keyboardOptions = KeyboardOptions.Default.copy(
-                autoCorrect = true,
                 capitalization = KeyboardCapitalization.Sentences,
                 imeAction = ImeAction.Next
             ),
@@ -111,14 +108,13 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
             onValueChange = { word3 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
                 disabledIndicatorColor = MaterialTheme.colorScheme.surface,
             ),
             label = { Text("Enter Word 3") },
             keyboardOptions = KeyboardOptions.Default.copy(
-                autoCorrect = true,
                 capitalization = KeyboardCapitalization.Sentences,
                 imeAction = ImeAction.Next
             ),
@@ -130,14 +126,13 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
             onValueChange = { word4 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
                 disabledIndicatorColor = MaterialTheme.colorScheme.surface,
             ),
             label = { Text("Enter Word 4") },
             keyboardOptions = KeyboardOptions.Default.copy(
-                autoCorrect = true,
                 capitalization = KeyboardCapitalization.Sentences,
                 imeAction = ImeAction.Next
             ),
@@ -149,14 +144,13 @@ fun EnterWordScreen(onButtonClicked: () -> Unit) {
             onValueChange = { word5 = it },
             singleLine = true,
             shape = MaterialTheme.shapes.large,
-            colors = TextFieldDefaults.textFieldColors(
+            colors = TextFieldDefaults.colors(
                 focusedIndicatorColor = MaterialTheme.colorScheme.primary,
                 unfocusedIndicatorColor = MaterialTheme.colorScheme.surface,
                 disabledIndicatorColor = MaterialTheme.colorScheme.surface,
             ),
             label = { Text("Enter Word 5") },
             keyboardOptions = KeyboardOptions.Default.copy(
-                autoCorrect = true,
                 capitalization = KeyboardCapitalization.Sentences,
                 imeAction = ImeAction.Done
             ),
