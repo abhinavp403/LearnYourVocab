@@ -3,6 +3,7 @@ package dev.abhinav.learnyourvocab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -22,6 +23,7 @@ class MainActivity : ComponentActivity() {
     private lateinit var sharedPreference: PreferencesManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         sharedPreference = PreferencesManager(this)
         val compareDateResult = LocalDate.now().compareTo(sharedPreference.getDate())
