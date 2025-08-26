@@ -58,7 +58,7 @@ class MainActivity : ComponentActivity() {
                             it.arguments!!.getString("word")
                         }
                         val generativeModel = GenerativeModel(
-                            modelName = "gemini-pro",
+                            modelName = "gemini-2.0-flash",
                             apiKey = BuildConfig.apiKey
                         )
                         WordDetailScreen(
