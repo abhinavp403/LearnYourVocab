@@ -46,7 +46,7 @@ fun WordDetailScreen(
                 .fillMaxSize()
         ) {
             Text(
-                text = clickedWord.capitalize(Locale.ROOT),
+                text = clickedWord.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.Bold,
                 fontSize = 32.sp,

@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
                             apiKey = BuildConfig.apiKey
                         )
                         WordDetailScreen(
-                            clickedWord = word?.toLowerCase(Locale.ROOT) ?: "",
+                            clickedWord = word?.lowercase(Locale.ROOT) ?: "",
                             navController = navController,
                             model = generativeModel
                         )
